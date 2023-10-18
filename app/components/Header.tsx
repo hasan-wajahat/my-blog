@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <header className="container mx-auto px-4 pt-4">
             <Link href={"/"}>
-                <span>
+                <span className="font-serif font-bold">
                     Frontend With Hasan
                 </span>
             </Link>
