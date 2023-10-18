@@ -1,12 +1,12 @@
-
+import Image from "next/image";
+import heroImage from './images/hero.jpeg'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="font-sans">
-        Frontend Blog
-      </h1>
-      <p>testing</p>
+    <main className="container p-4 mx-auto">
+      <div>
+        <Image src={heroImage} alt="Hero Image" className="max-w-lg" />
+      </div>
     </main>
   );
 }
