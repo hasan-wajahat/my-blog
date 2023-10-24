@@ -1,5 +1,6 @@
 import Image from "next/image";
 import heroImage from './images/hero.jpeg'
+import ArticleTile from "./components/ArticleTile";
 
 export default function Home() {
   return (
@@ -14,6 +15,15 @@ export default function Home() {
           </h2>
         </div>
         <Image src={heroImage} priority alt="Hero Image" aria-hidden className="max-[350px]:hidden" />
+      </div>
+
+      <div className="my-8">
+        <ArticleTile
+          title="Coming soon..."
+          author="Hasan Wajahat"
+          excerpt="React Router upgrade"
+          date="25-10-2023"
+        />
       </div>
     </main>
   );
