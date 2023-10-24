@@ -13,7 +13,7 @@ export default function Home() {
             Come and learn all things frontend with me!
           </h2>
         </div>
-        <Image src={heroImage} alt="Hero Image" className="max-[350px]:hidden" />
+        <Image src={heroImage} priority alt="Hero Image" aria-hidden className="max-[350px]:hidden" />
       </div>
     </main>
   );
