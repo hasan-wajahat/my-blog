@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter, Dosis } from 'next/font/google';
 import classNames from 'classnames';
-import Header from "./components/Header";
+import Header from './components/Header';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -26,7 +26,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={classNames(inter.variable, dosis.variable, 'bg-gray-50', 'dark:bg-gray-900', 'text-black', 'dark:text-white')}>
+      <body
+        className={classNames(
+          inter.variable,
+          dosis.variable,
+          'bg-gray-50',
+          'dark:bg-gray-900',
+          'text-black',
+          'dark:text-white'
+        )}
+      >
         <Header />
         {children}
         <Analytics />
