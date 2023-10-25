@@ -25,10 +25,11 @@ export default function Home() {
 
       <div className="my-8 max-w-3xl">
         <ArticleTile
-          title="Coming soon..."
+          title="Upgrading React Router to v6"
           author="Hasan Wajahat"
-          excerpt="React Router upgrade"
+          excerpt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, sapien vel bibendum bibendum,"
           date="25-10-2023"
+          slug="react-router-upgrade"
         />
       </div>
     </main>

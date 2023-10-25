@@ -1,8 +1,11 @@
+import Link from 'next/link';
+
 interface ArticleTileProps {
   title: string;
   author: string;
   date: string;
   excerpt: string;
+  slug: string;
 }
 
 const ArticleTile: React.FC<ArticleTileProps> = ({
@@ -10,15 +13,21 @@ const ArticleTile: React.FC<ArticleTileProps> = ({
   author,
   date,
   excerpt,
+  slug,
 }) => {
   return (
-    <div className="rounded-lg bg-gray-800 bg-opacity-50 p-4">
-      <h2>{title}</h2>
-      <p>
-        By {author} on {date}
+    <Link
+      href={`/${slug}`}
+      className="group block rounded-lg bg-gradient-to-r from-stone-200 p-4 dark:from-gray-800"
+    >
+      <h3 className="mb-2 font-serif text-xl font-bold group-hover:text-sky-500">
+        {title}
+      </h3>
+      <p className="mb-2 font-sans text-sm">
+        By {author} on <time dateTime={date}>{date}</time>
       </p>
-      <p>{excerpt}</p>
-    </div>
+      <p className="max-w-prose font-sans">{excerpt}</p>
+    </Link>
   );
 };
 
