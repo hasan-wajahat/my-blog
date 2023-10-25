@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import heroImage from './images/hero.jpeg';
 import ArticleTile from './components/ArticleTile';
+import { articleList } from './articles/articleList';
 
 export default function Home() {
   return (
@@ -24,13 +25,16 @@ export default function Home() {
       </div>
 
       <div className="my-8 max-w-3xl">
-        <ArticleTile
-          title="Upgrading React Router to v6"
-          author="Hasan Wajahat"
-          excerpt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, sapien vel bibendum bibendum,"
-          date="25-10-2023"
-          slug="react-router-upgrade"
-        />
+        {articleList.map((article) => (
+          <ArticleTile
+            key={article.slug}
+            title={article.title}
+            author={article.author}
+            excerpt={article.excerpt}
+            date={article.date}
+            slug={article.slug}
+          />
+        ))}
       </div>
     </main>
   );
