@@ -33,7 +33,8 @@ export default function RootLayout({
           'bg-gray-50',
           'dark:bg-gray-900',
           'text-black',
-          'dark:text-white'
+          'dark:text-white',
+          'font-sans'
         )}
       >
         <Header />
