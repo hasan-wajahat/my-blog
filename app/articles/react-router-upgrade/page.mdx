@@ -34,4 +34,34 @@ solve the problems you might face.
 
 ## Major Changes
 
-</article>
+There were bunch of API changes between v3 and v6. I highly recommend reading the official migration
+[guide](https://reactrouter.com/en/6.18.0/upgrading/v5). But as you can see from title it focused more
+on migrating from version 5. So I have compiled a list of major changes that you need to be aware of
+when upgrading from v3 to v6.
+
+- Before React Router had its own version of `location.query` and all the libraries that depended on
+  Router utilized this API. But by v6 the Router team had moved to using `URLSearchParams` which is
+  a native [browser API](https://developer.mozilla.org/en-US/docs/Web/API/URL/searchParams).
+- In v3 the Route component was passed a component as a prop but now element is passed as a prop. This
+  allows you to pass props easily to component in our Route.
+  ```js
+  <Route path=":userId" element={<Profile animate={true} />} />
+  ```
+- `withRouter` HOC is no longer available in v6. Instead v6 promotes the use of hooks to access
+  any router property you need.
+- In v3, components that were passed to the `Route` element by default were passed router props.
+  But now you have to specifically access them either using hooks or passing them as props.
+
+- History package is no longer a peer dependency of React Router. Instead it is a direct dependency
+  and its versioning is handled by React Router team. In fact you are recommended not to install it
+  at all so that there are no conflicts.
+
+There are a lot of other changes like `Switch` (introduced in v4) is now called `Routes`
+and `Redirect` is now called `Navigate`. But the main focus of this article is how
+we tackled the major challenges we faced in our large production app.
+
+## Our Specific Challenges
+
+To be continued...
+
+  </article>
