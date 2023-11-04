@@ -35,14 +35,14 @@ solve the problems you might face.
 ## Major Changes
 
 There were bunch of API changes between v3 and v6. I highly recommend reading the official migration
-[guide](https://reactrouter.com/en/upgrading/v5). But as you can see from title it focused more
+[guide](https://reactrouter.com/en/upgrading/v5). But as you can see from title, it focused more
 on migrating from version 5. So I have compiled a list of major changes that you need to be aware of
 when upgrading from v3 to v6.
 
 - Before React Router had its own version of `location.query` and all the libraries that depended on
   Router utilized this API. But by v6 the Router team had moved to using `URLSearchParams` which is
   a native [browser API](https://developer.mozilla.org/en-US/docs/Web/API/URL/searchParams).
-- In v3 the Route component was passed a component as a prop but now element is passed as a prop. This
+- In v3 the Route component accepted component as a prop but now element is passed as a prop. This
   allows you to pass props easily to component in our Route.
   ```js
   <Route path=":userId" element={<Profile animate={true} />} />
@@ -63,6 +63,105 @@ how we tackled the major challenges we faced in our large production app.
 
 ## Our Specific Challenges
 
-To be continued...
+### Creating your own withRouter HOC
+
+In older apps its common to see old class based components living alongside new functional components.
+Our app still has many legacy class based components meaning that we still needed access to the
+withRouter HOC. But now its not natively provided. So this is one of the first things we had to do.
+
+```ts
+export type WithRouterProps = {
+  router: Router,
+  location: Location;
+  params: Params;
+};
+
+export default function withRouter(Component: React.ElementType) {
+  function ComponentWithRouterProp(props: any) {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const params = useParams();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const router = {
+      location, params, navigate, searchParams, setSearchParams,
+    };
+    return (
+      <Component
+        {...props}
+        location={location}
+        params={params}
+        router={router}
+      />
+    );
+  }
+
+  return ComponentWithRouterProp;
+}
+```
+
+Using this HOC we were able to access router props in our class based components.
+
+### Navigating outside of Router's context
+
+In React Router you can not use hooks like `useNavigate` outside of Router's context. But it
+is common for apps to have navigation in things like Redux Thunks. This is one of the most difficult
+things to solve in v6. You can get an idea how contentious this issue is by looking at the
+[Github issue](https://github.com/remix-run/react-router/issues/9422) for it. People from the core team
+have suggested different solutions including using things like `unstable_HistoryRouter`. So for this
+important use-case we decided to use our novel approach which works great for us.
+
+We basically decided to rely on native JS custom events and event listeners. You can see what the code
+looks like below:
+
+```RouterEventListener.ts
+import { useEffect } from 'react';
+import {
+  NavigateOptions,
+  To,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
+import {
+  addListener,
+  NAVIGATE,
+  removeListener,
+} from 'utils/events';
+
+type RouterEventLoad = {
+  to: To;
+  options?: NavigateOptions;
+};
+
+function navigateMethod(props: RouterEventLoad) {
+  this.navigate(props.to, props.options);
+}
+
+const RouterEventListener = (): null => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    addListener(NAVIGATE, navigateMethod, { navigate });
+    return () => removeListener(NAVIGATE, navigateMethod);
+  }, [navigate]);
+
+  return null;
+};
+
+export default RouterEventListener;
+```
+
+```mainRouterNavigate.ts
+import { To, NavigateOptions } from 'react-router-dom';
+
+export const mainRouterNavigate = (to: To, options?: NavigateOptions) => {
+  emitEvent(NAVIGATE, { to, options });
+};
+```
+
+We are using the `eventemitter3` package but you don't need it to accomplish the same. With this approach
+you are free to navigate anywhere in your app by just calling `mainRouterNavigate(to, options)` and
+making sure that `<RouterEventListener />` is inside Routers context. The one advantage of
+using this approach compared to the ones mentioned in official repo is that you are free to
+use the latest data router and you avoid any cyclic dependencies.
 
   </article>
