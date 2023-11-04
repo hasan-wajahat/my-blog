@@ -23,7 +23,7 @@ or the current package is working fine so why bother upgrading it.
 
 Something like this happened to us in [Sematext](https://sematext.com/) and we kept delaying
 upgrade of React Router. We were still using React Router version 3 while 6 came out with
-bunch of enticing features. To give you some context: Router v3.0.0 came out late 2016
+bunch of enticing features. To give you some context: Router v3.0.0 came out in late 2016
 and v6.0.0 came out in late 2021!
 
 By mid 2022 we decided that it was high time we upgraded and I like our readers decided to google
@@ -35,7 +35,7 @@ solve the problems you might face.
 ## Major Changes
 
 There were bunch of API changes between v3 and v6. I highly recommend reading the official migration
-[guide](https://reactrouter.com/en/6.18.0/upgrading/v5). But as you can see from title it focused more
+[guide](https://reactrouter.com/en/upgrading/v5). But as you can see from title it focused more
 on migrating from version 5. So I have compiled a list of major changes that you need to be aware of
 when upgrading from v3 to v6.
 
@@ -57,8 +57,9 @@ when upgrading from v3 to v6.
   at all so that there are no conflicts.
 
 There are a lot of other changes like `Switch` (introduced in v4) is now called `Routes`
-and `Redirect` is now called `Navigate`. But the main focus of this article is how
-we tackled the major challenges we faced in our large production app.
+and `Redirect` is now called `Navigate`, plus amazing [API's](https://reactrouter.com/en/components/route)
+like loaders and actions were introduced. But the main focus of this article is
+how we tackled the major challenges we faced in our large production app.
 
 ## Our Specific Challenges
 
