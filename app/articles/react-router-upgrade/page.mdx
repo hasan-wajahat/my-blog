@@ -35,7 +35,7 @@ solve the problems you might face.
 ## Major Changes
 
 There were bunch of API changes between v3 and v6. I highly recommend reading the official migration
-[guide](https://reactrouter.com/en/upgrading/v5). But as you can see from title, it focused more
+[guide](https://reactrouter.com/en/upgrading/v5). But as you can see from title, it is focused more
 on migrating from version 5. So I have compiled a list of major changes that you need to be aware of
 when upgrading from v3 to v6.
 
@@ -118,7 +118,6 @@ import { useEffect } from 'react';
 import {
   NavigateOptions,
   To,
-  useLocation,
   useNavigate,
 } from 'react-router-dom';
 import {
@@ -138,7 +137,6 @@ function navigateMethod(props: RouterEventLoad) {
 
 const RouterEventListener = (): null => {
   const navigate = useNavigate();
-  const location = useLocation();
   useEffect(() => {
     addListener(NAVIGATE, navigateMethod, { navigate });
     return () => removeListener(NAVIGATE, navigateMethod);
@@ -163,5 +161,99 @@ you are free to navigate anywhere in your app by just calling `mainRouterNavigat
 making sure that `<RouterEventListener />` is inside Routers context. The one advantage of
 using this approach compared to the ones mentioned in official repo is that you are free to
 use the latest data router and you avoid any cyclic dependencies.
+
+### Nesting Routers
+
+Our project utilized more than one router. In fact the same routes are shared across multiple routers so
+that you can create a single page that you can open in the main view, split view or in a flyout. Whereas
+most of these are direct children of the parent component but split view router is part of the main router.
+Before you could nest routers but that is now prohibited. So how do we solve this problem?
+
+Enter [React Portals](https://react.dev/reference/react-dom/createPortal)! We create the split view router
+at the parent component as well but its content is rendered inside the main router using React Portal.
+
+### Passing Data in Routes
+
+Pre-upgrade we relied heavily on passing data in routes. For example all our breadcrumbs were constructed by
+passing specific breadcrumb to each relevant route in a path. In v3 it was easy for us to just append whatever
+data we needed for that route in the actual route configuration. But when v6 initially launched it had no such
+facility. But with the introduction of data router they introduced handle property plus useMatches API for accessing
+route specific data. Now we have Routes like this:
+
+```routes.js
+<Routes>
+  <Route path=":userId" element={<Profile />} handle={{ breadcrumb: 'Profile' }}>
+    <Route path=":postId" element={<Post />} handle={{ breadcrumb: 'Post' }} />
+  </Route>
+</Routes>
+```
+
+Then you can you have a breadcrumb component like so:
+
+```Breadcrumb.tsx
+import { useMatches } from 'react-router-dom';
+
+function useBreadcrumbs(): Array<string | React.ReactNode> {
+  const handle = useRouteHandle();
+  return handle.filter((h) => h?.breadcrumb).map((h) => h.breadcrumb);
+}
+
+const Breadcrumb = () => {
+  const breadcrumbs = useBreadcrumbs();
+  return (
+    <div>
+      {breadcrumbs.map((breadcrumb) => (
+        <span>{breadcrumb}</span>
+      ))}
+    </div>
+  );
+};
+```
+
+### Solving circular dependencies
+
+Because this blog is about upgrading a large app, from v3 to v6, it means that you will have some
+legacy in your codebase. And if your app is structured in a way that you have to import the same thing
+in multiple places there is a possibility that you will run into circular dependency issues. You can
+also run into this issue if you decide to import your main router object in different files for navigation.
+
+To solve circular dependency the correct approach is to refactor your codebase so that you import the
+common stuff from a single file. With correct modularization you can avoid this issue altogether.
+
+But that might not be possible for your codebase or it may require a mammoth effort in an already large
+router upgrade. So as a last resort I will reluctantly suggest the following approach where we create a
+router object initially and inject the the newly created router object into it with the following approach:
+
+```js
+// Smaller module relying on main router
+let router = null;
+
+export function injectSplitScreenRoutes(injectedRoutes) {
+  router = createMemoryRouter(createRoutesFromElements(
+    <Route path="/" element={<VizSplitScreenContainerWithReport />}>
+      {injectedRoutes()}
+    </Route>
+  ));
+}
+
+// Main router
+
+import { injectSplitScreenRoutes } from 'utils/splitScreenRoutes';
+
+const routes = ....
+
+injectSplitScreenRoutes(routes);
+```
+
+I would reiterate that this should be a last resort, either you should not have circular dependencies
+or you should refactor your codebase to avoid them. But if you get stuck like we did then you can look
+at this approach. (I am not proud of it 😅)
+
+## Conclusion
+
+In this blog post I have tried to share the major pain points of upgrading from v3 to v6 and how to
+solve those. React Router v6 is a great upgrade and with new data routers it has opened a lot of
+useful features. Hopefully this article can help people who like us
+who were stuck on v3 still. Happy coding! 🚀
 
   </article>
