@@ -20,7 +20,6 @@ export default function Home() {
           priority
           alt="Hero Image"
           aria-hidden
-          className="max-[390px]:hidden"
           sizes="(max-width: 768px) 50vw, (max-width: 1200px) 30vw"
         />
       </div>
