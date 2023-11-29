@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import profileImg from '@/images/hasan.png';
-import ReactLogo from '@/images/banner/react-logo.png';
-import AngularLogo from '@/images/banner/angular-logo.png';
-import ReduxLogo from '@/images/banner/redux-logo.png';
-import LaravelLogo from '@/images/banner/laravel-logo.png';
-import NodeLogo from '@/images/banner/node-logo.png';
-import GitLogo from '@/images/banner/git-logo.png';
-import DockerLogo from '@/images/banner/docker-logo.png';
+import reactLogo from '@/images/logos/react.png';
+import nextJsLogo from '@/images/logos/nextjs.svg';
+import reduxLogo from '@/images/logos/redux.png';
+import laravelLogo from '@/images/logos/laravel.png';
+import lambdaLogo from '@/images/logos/lambda.svg';
+import goLogo from '@/images/logos/go.png';
+import dockerLogo from '@/images/logos/docker.png';
 
 const Banner = () => {
   const currentYear = new Date().getFullYear();
@@ -30,22 +30,18 @@ const Banner = () => {
         </div>
       </div>
 
-      <div className="relative bottom-10 mx-auto flex max-w-[80%] rounded-lg bg-gray-900 px-5 py-3 shadow-sm shadow-gray-500/20">
-        <Image src={ReactLogo} alt="React logo" className="mr-5 h-20 w-20" />
+      <div className="relative bottom-10 mx-auto flex max-w-[80%] rounded-lg bg-gray-900 px-5 py-3 shadow-[0_0_2px_2px] shadow-gray-500/20">
+        <Image src={reactLogo} alt="React logo" className="mr-5 h-20 w-20" />
+        <Image src={nextJsLogo} alt="Next JS logo" className="mr-5 h-20 w-20" />
+        <Image src={reduxLogo} alt="Redux logo" className="mr-5 h-20 w-20" />
         <Image
-          src={AngularLogo}
-          alt="Angular logo"
-          className="mr-5 h-20 w-20"
-        />
-        <Image src={ReduxLogo} alt="Redux logo" className="mr-5 h-20 w-20" />
-        <Image
-          src={LaravelLogo}
+          src={laravelLogo}
           alt="Laravel logo"
           className="mr-5 h-20 w-20"
         />
-        <Image src={GitLogo} alt="Git logo" className="mr-5 h-20 w-20" />
-        <Image src={NodeLogo} alt="Node logo" className="mr-5 h-20 w-20" />
-        <Image src={DockerLogo} alt="Docker logo" className="h-20 w-20" />
+        <Image src={goLogo} alt="Git logo" className="mr-5 h-20 w-20" />
+        <Image src={lambdaLogo} alt="Node logo" className="mr-5 h-20 w-20" />
+        <Image src={dockerLogo} alt="Docker logo" className="h-20 w-20" />
       </div>
     </div>
   );
