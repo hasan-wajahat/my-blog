@@ -1,5 +1,6 @@
-import { Metadata } from "next";
-import Banner from "./Banner";
+import { Metadata } from 'next';
+import Banner from './Banner';
+import CurrentWork from './CurrentWork';
 
 export const metadata: Metadata = {
   title: 'Hasan Wajahat CV',
@@ -10,7 +11,7 @@ export default function AboutMe() {
   return (
     <main className="container mx-auto">
       <Banner />
+      <CurrentWork />
     </main>
   );
-
 }
