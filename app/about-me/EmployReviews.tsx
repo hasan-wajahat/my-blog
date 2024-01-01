@@ -68,7 +68,7 @@ const Card = ({ image, name, title, testimonial }: CardProps) => {
 const EmployReviews = () => {
   return (
     <section className="mx-auto max-w-3xl">
-      <h2 className="my-4 text-2xl font-bold">From My Employees</h2>
+      <h2 className="my-6 text-2xl font-bold">From My Employees</h2>
       <Carousel>
         <CarouselContent>
           {EMPLOYER_DATA.map((employer) => (

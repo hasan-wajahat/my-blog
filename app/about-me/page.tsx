@@ -3,6 +3,7 @@ import Banner from './Banner';
 import CurrentWork from './CurrentWork';
 import WhyMe from './WhyMe';
 import EmployReviews from './EmployReviews';
+import ContactMe from './ContactMe';
 
 export const metadata: Metadata = {
   title: 'Hasan Wajahat CV',
@@ -16,6 +17,7 @@ export default function AboutMe() {
       <CurrentWork />
       <WhyMe />
       <EmployReviews />
+      <ContactMe />
     </main>
   );
 }
