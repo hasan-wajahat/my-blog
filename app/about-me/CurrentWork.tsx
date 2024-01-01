@@ -2,7 +2,7 @@ import CurrentWorkCarousel from './CurrentWorkCarousel';
 
 const CurrentWork = () => {
   return (
-    <div className="flex gap-x-12">
+    <section className="flex gap-x-12">
       <div className="flex-1">
         <h2 className="text-2xl font-bold">Current Body of Work</h2>
         <p className="my-4">
@@ -46,7 +46,7 @@ const CurrentWork = () => {
         </p>
       </div>
       <CurrentWorkCarousel />
-    </div>
+    </section>
   );
 };
 

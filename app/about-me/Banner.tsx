@@ -12,7 +12,7 @@ const Banner = () => {
   const currentYear = new Date().getFullYear();
   const experience = currentYear - 2015;
   return (
-    <div className="relative flex flex-col">
+    <section className="relative flex flex-col">
       <div className="flex">
         <div className="flex flex-shrink flex-grow basis-0 justify-center">
           <div>
@@ -43,7 +43,7 @@ const Banner = () => {
         <Image src={lambdaLogo} alt="Node logo" className="mr-5 h-20 w-20" />
         <Image src={dockerLogo} alt="Docker logo" className="h-20 w-20" />
       </div>
-    </div>
+    </section>
   );
 };
 
