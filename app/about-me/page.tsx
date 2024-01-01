@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Banner from './Banner';
 import CurrentWork from './CurrentWork';
+import WhyMe from './WhyMe';
 
 export const metadata: Metadata = {
   title: 'Hasan Wajahat CV',
@@ -12,6 +13,7 @@ export default function AboutMe() {
     <main className="container mx-auto">
       <Banner />
       <CurrentWork />
+      <WhyMe />
     </main>
   );
 }
