@@ -2,7 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter, Dosis } from 'next/font/google';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import Header from './components/Header';
 
 const inter = Inter({
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-pt-12">
       <body
-        className={classNames(
+        className={clsx(
           inter.variable,
           dosis.variable,
           'bg-gray-50',
