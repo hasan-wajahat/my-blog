@@ -1,7 +1,9 @@
+import CurrentWorkCarousel from './CurrentWorkCarousel';
+
 const CurrentWork = () => {
   return (
-    <div className="flex">
-      <div>
+    <div className="flex gap-x-12">
+      <div className="flex-1">
         <h2 className="text-2xl font-bold">Current Body of Work</h2>
         <p className="my-4">
           Having worked with startups and enterprises, I have had the chance to
@@ -43,6 +45,7 @@ const CurrentWork = () => {
           to assist their agents in their day to day work.
         </p>
       </div>
+      <CurrentWorkCarousel />
     </div>
   );
 };
