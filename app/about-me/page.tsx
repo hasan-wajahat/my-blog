@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Banner from './Banner';
 import CurrentWork from './CurrentWork';
 import WhyMe from './WhyMe';
+import EmployReviews from './EmployReviews';
 
 export const metadata: Metadata = {
   title: 'Hasan Wajahat CV',
@@ -14,6 +15,7 @@ export default function AboutMe() {
       <Banner />
       <CurrentWork />
       <WhyMe />
+      <EmployReviews />
     </main>
   );
 }

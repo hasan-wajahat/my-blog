@@ -1,6 +1,6 @@
 const WhyMe = () => {
   return (
-    <section className="mx-auto max-w-3xl">
+    <section className="mx-auto max-w-3xl text-justify">
       <h2 className="my-4 text-2xl font-bold">Why Me</h2>
       <p className="my-4">
         I am an experienced web developer who has built apps ranging from
