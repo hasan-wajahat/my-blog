@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function AboutMe() {
   return (
-    <main className="container mx-auto">
+    <main className="container mx-auto mb-8">
       <Banner />
       <CurrentWork />
       <WhyMe />
