@@ -82,8 +82,8 @@ const EmployReviews = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious variant="default" />
+        <CarouselNext variant="default" />
       </Carousel>
     </section>
   );

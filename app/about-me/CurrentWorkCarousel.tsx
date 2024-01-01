@@ -29,8 +29,8 @@ const CurrentWorkCarousel = () => {
           <Image src={reports} alt="Reports example" />
         </CarouselItem>
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious variant="default" />
+      <CarouselNext variant="default" />
     </Carousel>
   );
 };
