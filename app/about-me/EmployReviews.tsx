@@ -70,7 +70,7 @@ const EmployReviews = () => {
     <section className="mx-auto max-w-3xl">
       <h2 className="my-6 text-2xl font-bold">From My Employees</h2>
       <Carousel>
-        <CarouselContent>
+        <CarouselContent className="p-2">
           {EMPLOYER_DATA.map((employer) => (
             <CarouselItem key={employer.name} className="md:basis-1/2">
               <Card
