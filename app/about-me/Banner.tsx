@@ -43,7 +43,7 @@ const Banner = () => {
         </div>
       </div>
 
-      <div className="relative inline-flex flex-wrap justify-center gap-3 rounded-lg bg-gray-200 px-5 py-3 shadow-[0_0_2px_2px] shadow-gray-500/20 dark:bg-gray-900 md:bottom-10 md:mx-auto md:flex md:max-w-[80%] md:flex-nowrap md:gap-5">
+      <div className="relative inline-flex flex-wrap justify-center gap-3 rounded-lg bg-gray-200 px-5 py-3 shadow-[0_0_2px_2px] shadow-gray-500/20 dark:bg-gray-900 md:bottom-10 md:mx-auto md:flex md:flex-nowrap md:gap-5 lg:max-w-[80%]">
         <Image
           src={reactLogo}
           alt="React logo"
