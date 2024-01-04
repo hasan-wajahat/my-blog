@@ -14,18 +14,18 @@ import anonymousImage from '@/images/employ-reviews/anonymous.png';
 
 const EMPLOYER_DATA = [
   {
-    name: 'Asaf Ebgi',
-    title: 'Co-Founder & CTO, XYB',
-    image: asafImage,
-    testimonial:
-      'Hasan has proven himself to be an excellent employee. During his tenure in XYB he has shown tremendous growth and initiative. We have always felt comfortable giving him projects due to his ability to finish tasks allotted to him. Also he has complete grip over all matters related to web technologies.',
-  },
-  {
     name: 'Eric Zimmerman',
     title: 'Co-Founder & CEO, XYB',
     image: ericImage,
     testimonial:
       "Hasan is a very talented developer. Over the 2+ years we've worked together, he's never stopped growing his skill set and exceeding expectations. He's always been very conscientious and has taken great cares in both his craft and client satisfaction. I would highly recommend him- his positive attitude and continuous-learning mindset sets him apart as someone I genuinely enjoy working with.",
+  },
+  {
+    name: 'Asaf Ebgi',
+    title: 'Co-Founder & CTO, XYB',
+    image: asafImage,
+    testimonial:
+      'Hasan has proven himself to be an excellent employee. During his tenure in XYB he has shown tremendous growth and initiative. We have always felt comfortable giving him projects due to his ability to finish tasks allotted to him. Also he has complete grip over all matters related to web technologies.',
   },
   {
     name: 'Hyunil Chon',
@@ -68,7 +68,7 @@ const Card = ({ image, name, title, testimonial }: CardProps) => {
 const EmployReviews = () => {
   return (
     <section className="mx-auto max-w-3xl">
-      <h2 className="my-6 text-2xl font-bold">From My Employees</h2>
+      <h2 className="my-4 text-2xl font-bold md:my-6">From My Employees</h2>
       <Carousel>
         <CarouselContent className="p-2">
           {EMPLOYER_DATA.map((employer) => (
@@ -82,8 +82,8 @@ const EmployReviews = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious variant="default" />
-        <CarouselNext variant="default" />
+        <CarouselPrevious className="-left-8" variant="default" />
+        <CarouselNext className="-right-8" variant="default" />
       </Carousel>
     </section>
   );

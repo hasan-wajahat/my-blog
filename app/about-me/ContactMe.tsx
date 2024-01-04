@@ -5,8 +5,8 @@ import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 const ContactMe = () => {
   return (
     <section className="text-center">
-      <h2 className="my-6 text-2xl font-bold">Contact Me</h2>
-      <p className="my-6 text-xl font-bold">hasan_wajahat@hotmail.com</p>
+      <h2 className="my-4 text-2xl font-bold md:my-6">Contact Me</h2>
+      <p className="my-4 text-xl font-bold">hasan_wajahat@hotmail.com</p>
       <div className="flex justify-center">
         <Button
           onClick={() => {

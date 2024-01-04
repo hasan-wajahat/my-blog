@@ -13,7 +13,7 @@ const Banner = () => {
   const currentYear = new Date().getFullYear();
   const experience = currentYear - 2015;
   return (
-    <section className="relative flex flex-col">
+    <section className="relative inline-flex flex-col md:flex">
       <div className="my-4 flex md:my-0">
         <div className="mr-2 md:hidden">
           <Image
@@ -23,7 +23,7 @@ const Banner = () => {
             className="w-[120px] rounded-full bg-gray-200 object-cover dark:bg-gray-600"
           />
         </div>
-        <div className="flex flex-shrink flex-grow basis-0 justify-center">
+        <div className="flex flex-shrink flex-grow basis-0 md:justify-center">
           <div>
             <p className="my-1 md:my-4">Hello</p>
             <h1 className="mb-2 text-2xl md:mb-6 md:text-6xl">
@@ -43,7 +43,7 @@ const Banner = () => {
         </div>
       </div>
 
-      <div className="relative mx-auto flex flex-wrap justify-center gap-3 rounded-lg bg-gray-200 px-5 py-3 shadow-[0_0_2px_2px] shadow-gray-500/20 dark:bg-gray-900 md:bottom-10 md:max-w-[80%] md:flex-nowrap md:gap-5">
+      <div className="relative inline-flex flex-wrap justify-center gap-3 rounded-lg bg-gray-200 px-5 py-3 shadow-[0_0_2px_2px] shadow-gray-500/20 dark:bg-gray-900 md:bottom-10 md:mx-auto md:flex md:max-w-[80%] md:flex-nowrap md:gap-5">
         <Image
           src={reactLogo}
           alt="React logo"
