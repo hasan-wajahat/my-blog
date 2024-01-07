@@ -39,17 +39,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
-        <Analytics
-          beforeSend={(event) => {
-            if (
-              event.url === 'https://frontendwithhasan.com/' ||
-              event.url === 'https://frontendwithhasan.com'
-            ) {
-              return null;
-            }
-            return event;
-          }}
-        />
+        <Analytics />
       </body>
     </html>
   );
