@@ -1,5 +1,7 @@
 # My Blog and CV App
 
+[![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=my-blog)](https://vercel.com/hasan-wajahat/my-blog)
+
 This project is a combination of a blog and a CV application. It's built with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), and [TypeScript](https://www.typescriptlang.org/).
 
 ## Features
