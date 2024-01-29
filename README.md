@@ -1,34 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# My Blog and CV App
+
+This project is a combination of a blog and a CV application. It's built with [Next.js](https://nextjs.org/), [React](https://reactjs.org/), and [TypeScript](https://www.typescriptlang.org/).
+
+## Features
+
+- **articles**: Where I share my frontend knowledge with the world.
+- **about-me**: Where I share my CV and my contact information.
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+```
+
+Then, run the development server:
+
+```bash
 pnpm dev
+```
+
+You can also run the production server:
+
+```bash
+pnpm build
+pnpm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The main parts of the project are:
 
-## Learn More
+app/: Contains the pages of the application.
 
-To learn more about Next.js, take a look at the following resources:
+app/components/: Contains reusable components.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+app/articles/: Contains individual articles.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+app/about-me/: Contains the about me page.
 
-## Deploy on Vercel
+## Technologies
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Next.js](https://nextjs.org/) as the meta framework.
+- [TypeScript](https://www.typescriptlang.org/) as the main language.
+- [Tailwind CSS](https://tailwindcss.com/) as the CSS framework.
+- [pnpm](https://pnpm.io/) as the package manager.
+- [ESLint](https://eslint.org/) as the linter.
+- [Prettier](https://prettier.io/) as the code formatter.
+- [@next/mdx](https://nextjs.org/docs/pages/building-your-application/configuring/mdx#nextmdx) as the markdown parser.
+
+## Deployment
+
+Project is deployed automatically on [Vercel](https://vercel.com/). Just push to the `main` branch and it will be deployed.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
