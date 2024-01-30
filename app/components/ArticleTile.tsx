@@ -18,7 +18,7 @@ const ArticleTile: React.FC<ArticleTileProps> = ({
   return (
     <Link
       href={`/articles/${slug}`}
-      className="group block rounded-lg bg-gradient-to-r from-stone-200 p-4 dark:from-gray-800"
+      className="group mb-4 block rounded-lg bg-gradient-to-r from-stone-200 p-4 dark:from-gray-800"
     >
       <h3 className="mb-2 font-serif text-xl font-bold group-hover:text-sky-500">
         {title}

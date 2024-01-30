@@ -1,10 +1,8 @@
 import Image from 'next/image';
+import {getMetadataBySlug} from '../articleList';
 import heroImage from './hero.webp';
 
-export const metadata = {
-  title: 'Upgrading React Router to v6',
-  description: 'A detailed guide on upgrading react router from version 3 to 6',
-};
+export const metadata = getMetadataBySlug('react-router-upgrade');
 
 <Image
   src={heroImage}
