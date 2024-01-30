@@ -1,8 +1,11 @@
 import type { MDXComponents } from 'mdx/types';
 import { Code } from 'bright';
-import { AnchorHTMLAttributes, DetailedHTMLProps, HTMLAttributes } from "react";
+import { AnchorHTMLAttributes, DetailedHTMLProps, HTMLAttributes } from 'react';
 
-type CustomLinkProps = DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>;
+type CustomLinkProps = DetailedHTMLProps<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  HTMLAnchorElement
+>;
 
 const CustomLink = ({ children, href }: CustomLinkProps) => (
   <a href={href} target="_blank" rel="noopener noreferrer">
@@ -10,9 +13,16 @@ const CustomLink = ({ children, href }: CustomLinkProps) => (
   </a>
 );
 
-const toSlug = (text: string) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+const toSlug = (text: string) =>
+  text
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]+/g, '');
 
-type HeadingProps = DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
+type HeadingProps = DetailedHTMLProps<
+  HTMLAttributes<HTMLHeadingElement>,
+  HTMLHeadingElement
+>;
 
 const Heading = ({ level, children }: HeadingProps & { level: number }) => {
   const slug = toSlug(String(children));
@@ -20,7 +30,9 @@ const Heading = ({ level, children }: HeadingProps & { level: number }) => {
 
   return (
     <Tag id={slug}>
-      <a href={`#${slug}`} className="not-prose">{children}</a>
+      <a href={`#${slug}`} className="not-prose">
+        {children}
+      </a>
     </Tag>
   );
 };
