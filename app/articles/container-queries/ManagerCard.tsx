@@ -13,9 +13,9 @@ interface ManagerInfo {
 }
 
 const manager: ManagerInfo = {
-  email: 'sean.monahan@sematext.com',
-  firstName: 'Sean',
-  lastName: 'Monahan',
+  email: 'support@sematext.com',
+  firstName: 'John',
+  lastName: 'Doe',
   link: 'https://sematext.com/',
   role: 'Account Manager',
 };

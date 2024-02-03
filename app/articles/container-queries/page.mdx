@@ -1,30 +1,54 @@
-import {getMetadataBySlug} from '../articleList';
-import {ManagerCard} from './ManagerCard';
+import { MdxImage as Image } from '@/components/MdxImage';
+import { getMetadataBySlug } from '../articleList';
+import { ManagerCard } from './ManagerCard';
+import inFlyoutImage from './in-flyout.png';
+import inMainPageImage from './in-main-page.png';
 
 export const metadata = getMetadataBySlug('container-queries');
 
 <article>
 # Container Queries
 
-As the web has evolved, we have moved to using more and more components. Be it 
+As the web has evolved, we have moved to using more and more components. Be it
 Frontend frameworks like React or Svelte, or templating languages like laravel Blade; all of them
-depend on the concept of components. These components can be used inside dialogs, split-screens or 
+depend on the concept of components. These components can be used inside dialogs, split-screens or
 the main content area, meaning their size requirements can vary widely. Luckily for us, CSS has
 caught up with this trend and has introduced a new feature called Container Queries, which allows
 us to style components based on their container size.
 
-You may be wondering, “Hasan we already have media queries!”. And you are right of course, but 
-media queries are based on the viewport size, and with how you can have your component anywhere 
+You may be wondering, “Hasan we already have media queries!”. And you are right of course, but
+media queries are based on the viewport size, and with how you can have your component anywhere
 wouldn't it be nice if your component could be aware of its container size and adjust accordingly?
 And all that without a single line of JS? Now that I have your attention (hopefully), let's dive in.
-
 
 ## How and When to use Container Queries
 
 Below I am rendering a simple ManagerCard component that we use in bunch of places in [Sematext](https://sematext.com/).
-This is a simplified version of the original component. 
+This is a simplified (and cruder) version of the original component.
 
 <ManagerCard />
-<figcaption>With MDX I can render the component instead of using an image.</figcaption>
+<figcaption>
+  With MDX I can render the component instead of using an image.
+</figcaption>
+
+The component can be rendered in different places on our site as shown below:
+
+<figure>
+  <Image src={inMainPageImage} alt="ManagerCard in main page" />
+  <figcaption>ManagerCard in main page</figcaption>
+</figure>
+<figure>
+  <Image src={inFlyoutImage} alt="ManagerCard in flyout" />
+  <figcaption>ManagerCard in flyout</figcaption>
+</figure>
+
+Before I introduced container queries, we had to pass additional props like “minimal” to the
+component to adjust its sizing depending on where it was rendered. And this could become overly
+complex as we we continue to add it in different places. This becomes worse when you consider smaller
+screens like tablets.
+
+But with container queries it did not matter where this component is used. It will automatically adjust
+its styling based on space available. This allows use to get rid of the additional props and makes the
+component more reusable and easier to maintain.
 
 </article>
