@@ -3,6 +3,7 @@ import { getMetadataBySlug } from '../articleList';
 import { ManagerCard } from './ManagerCard';
 import inFlyoutImage from './in-flyout.png';
 import inMainPageImage from './in-main-page.png';
+import browserSupport from './browser-support.png';
 
 export const metadata = getMetadataBySlug('container-queries');
 
@@ -153,5 +154,52 @@ You can also shorthand to for setting container name and type:
 ```
 
 ## Container Query Gotchas
+
+Container queries turn off the ability of the element to get size information of the container
+from its content. So as soon you define an element as a container it will collapse irrespective of
+what content it has. Unless you specify the width and height of the container explicitly.
+
+This is where we revisit the container type. As we saw we have 3 possible values for container type.
+We don't care about the normal value as that is just the default for elements and means we don't have
+any container query size calculations for the container. The other 2 properties allow us to access the
+magic of container queries. When using “container-type: size” then the queries can check both width and
+height of the element. This also means that we have to specify both width and height of the container.
+
+In my experience “container-type: inline-size” is the most useful one. For one thing you only need
+to specify the width of the container. And mostly for applying styles I find that width of the container
+is more important than the height.
+
+## Usage in TailwindCSS
+
+If you are like me and love tailwind then you would be pleased to know that tailwind also supports
+container queries. This support is not out of the box but there is an official plugin
+[tailwindcss-container-queries](https://github.com/tailwindlabs/tailwindcss-container-queries) that
+helps you write container queries today.
+
+Here is how you would use it:
+
+```html
+<div class="@container">
+  <div class="@lg:flex">
+    <!-- Makes the div a flexbox when the container is larger than `32rem` -->
+  </div>
+</div>
+```
+
+## Browser Support
+
+Well the good news does not end here! Container queries are not supported in all major browsers
+and you can safely use it in production sites today.
+
+<figure>
+  <Image src={browserSupport} alt="Can I use container queries" />
+  <figcaption>Browser Support for Container queries</figcaption>
+</figure>
+
+## Conclusion
+
+Container queries is one of the best features that has been added to CSS in recent years. It
+fits so well with the component architecture of the web today. It is not only easy to use but
+has great browser support today! So go out and give it a go 🚀.
 
 </article>
