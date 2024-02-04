@@ -21,7 +21,7 @@ media queries are based on the viewport size, and with how you can have your com
 wouldn't it be nice if your component could be aware of its container size and adjust accordingly?
 And all that without a single line of JS? Now that I have your attention (hopefully), let's dive in.
 
-## How and When to use Container Queries
+## When to use Container Queries
 
 Below I am rendering a simple ManagerCard component that we use in bunch of places in [Sematext](https://sematext.com/).
 This is a simplified (and cruder) version of the original component.
@@ -50,5 +50,108 @@ screens like tablets.
 But with container queries it did not matter where this component is used. It will automatically adjust
 its styling based on space available. This allows use to get rid of the additional props and makes the
 component more reusable and easier to maintain.
+
+## How to use Container Queries
+
+Lets see how would use container queries to style the ManagerCard component.
+
+```js
+<div className="manager-card-container">
+  <div className="manager-card">
+    <h3>ManagerCard</h3>
+    <p>Some content</p>
+  </div>
+</div>
+```
+
+To begin with we need to define a container and set the container-type property:
+
+```css
+.manager-card-container {
+  container-type: inline-size;
+  width: 100%;
+}
+```
+
+The container-type property can have 3 possible values:
+
+- size: Uses width and height of the container
+- inline-size: Uses width of the container
+- normal: The element is not a query container
+
+We will explain in a little more detail the what these values mean but first lets see
+how we use they query part of container queries.
+
+```css
+// default size
+.manager-card {
+  display: block;
+}
+
+// when the container is greater than 660px
+@container (inline-size > 660px ) {
+  .manager-card {
+    display: flex;
+  }
+}
+```
+
+Just like media queries we tell the browser to apply specific styles when the container size is
+less or greater than a certain value. In this case we changing from block to flex when the container
+is greater than 660px.
+
+### Container Condition
+
+Another added advantage of using container queries is that we can use the much more comfortable syntax
+for our size conditionals. The min and max width syntax will also work but I find this new syntax more
+inline with the rest of our programming languages. Unlike media queries, container query rule set has
+a much more dynamic condition set. Here are a few neat examples directly from
+[mdn](https://developer.mozilla.org/en-US/docs/Web/CSS/@container), I would highly recommend the article
+to look at all available options.
+
+```css
+@container (width > 400px) and (height > 400px) {
+  /* <stylesheet> */
+}
+
+@container (width > 400px) or (height > 400px) {
+  /* <stylesheet> */
+}
+
+@container not (width < 400px) {
+  /* <stylesheet> */
+}
+```
+
+### Container Name
+
+By default, the container query will apply styles based on the nearest parent with containment context.
+But there may be times when you would like to control the containment context that your container query
+is based on. For this we can use the container-name property.
+
+```css
+/* A single name */
+container-name: managerCardContainer;
+
+/* Multiple names */
+container-name: managerCardContainer managerCardParent;
+
+/* Using the container name */
+@container managerCardContainer (inline-size > 660px ) {
+  .manager-card {
+    display: flex;
+  }
+}
+```
+
+You can also shorthand to for setting container name and type:
+
+```css
+.manager-card-container {
+  container: managerCardContainer / inline-size;
+}
+```
+
+## Container Query Gotchas
 
 </article>
