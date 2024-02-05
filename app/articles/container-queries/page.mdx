@@ -53,18 +53,18 @@ The component can be rendered in different places on our site as shown below:
   <figcaption>ManagerCard in flyout</figcaption>
 </figure>
 
-Before I introduced container queries, we had to pass additional props like “minimal” to the
-component to adjust its sizing depending on where it was rendered. And this could become overly
-complex as we we continue to add it in different places. This becomes worse when you consider smaller
-screens like tablets.
+Before I introduced container queries, we had to pass additional props like “minimal”
+to the component to adjust its sizing depending on where it was rendered. This could
+become overly complex as we continued to add it in different places. This becomes worse
+when you consider smaller screens like tablets.
 
-But with container queries it did not matter where this component is used. It will automatically adjust
-its styling based on space available. This allows use to get rid of the additional props and makes the
-component more reusable and easier to maintain.
+But with container queries, it doesn’t matter where this component is used. It will
+automatically adjust its styling based on the space available. This allows us to get
+rid of the additional props and makes the component more reusable and easier to maintain.
 
 ## How to use Container Queries
 
-Lets see how would use container queries to style the ManagerCard component.
+Let’s see how we would use container queries to style the ManagerCard component.
 
 ```js
 <div className="manager-card-container">
@@ -75,7 +75,7 @@ Lets see how would use container queries to style the ManagerCard component.
 </div>
 ```
 
-To begin with we need to define a container and set the container-type property:
+To begin with we need to define a container and set the `container-type` property:
 
 ```css
 .manager-card-container {
@@ -86,12 +86,12 @@ To begin with we need to define a container and set the container-type property:
 
 The container-type property can have 3 possible values:
 
-- size: Uses width and height of the container
-- inline-size: Uses width of the container
-- normal: The element is not a query container
+- `size`: Uses width and height of the container
+- `inline-size`: Uses width of the container
+- `normal`: The element is not a query container
 
-We will explain in a little more detail the what these values mean but first lets see
-how we use they query part of container queries.
+We will explain in a little more detail what these values mean, but first,
+let’s see how we use the query part of container queries.
 
 ```css
 // default size
@@ -107,18 +107,18 @@ how we use they query part of container queries.
 }
 ```
 
-Just like media queries we tell the browser to apply specific styles when the container size is
-less or greater than a certain value. In this case we changing from block to flex when the container
-is greater than 660px.
+Just like media queries, we tell the browser to apply specific styles when the container size
+is less or greater than a certain value. In this case, we are changing from block to flex when
+the container is greater than 660px.
 
 ### Container Condition
 
-Another added advantage of using container queries is that we can use the much more comfortable syntax
-for our size conditionals. The min and max width syntax will also work but I find this new syntax more
-inline with the rest of our programming languages. Unlike media queries, container query rule set has
-a much more dynamic condition set. Here are a few neat examples directly from
-[mdn](https://developer.mozilla.org/en-US/docs/Web/CSS/@container), I would highly recommend the article
-to look at all available options.
+Another added advantage of using container queries is that we can use a much more comfortable
+syntax for our size conditionals. The min and max width syntax will also work, but I find
+this new syntax more in line with the rest of our programming languages. Unlike media queries,
+the container query rule set has a much more dynamic condition set. Here are a few neat examples
+directly from [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/@container). I would highly
+recommend the article to look at all available options.
 
 ```css
 @container (width > 400px) and (height > 400px) {
@@ -136,9 +136,10 @@ to look at all available options.
 
 ### Container Name
 
-By default, the container query will apply styles based on the nearest parent with containment context.
-But there may be times when you would like to control the containment context that your container query
-is based on. For this we can use the container-name property.
+By default, the container query will apply styles based on the nearest parent with a
+containment context. However, there may be times when you would like to control the
+containment context that your container query is based on. For this, we can use the
+container-name property.
 
 ```css
 /* A single name */
@@ -155,7 +156,7 @@ container-name: managerCardContainer managerCardParent;
 }
 ```
 
-You can also shorthand to for setting container name and type:
+You can also use shorthand for setting container name and type:
 
 ```css
 .manager-card-container {
@@ -165,26 +166,27 @@ You can also shorthand to for setting container name and type:
 
 ## Container Query Gotchas
 
-Container queries turn off the ability of the element to get size information of the container
-from its content. So as soon you define an element as a container it will collapse irrespective of
-what content it has. Unless you specify the width and height of the container explicitly.
+Container queries disable the ability of the element to obtain size information of the container
+from its content. As soon as you define an element as a container, it will collapse, irrespective
+of the content it has, unless you specify the width and height of the container explicitly.
 
-This is where we revisit the container type. As we saw we have 3 possible values for container type.
-We don't care about the normal value as that is just the default for elements and means we don't have
-any container query size calculations for the container. The other 2 properties allow us to access the
-magic of container queries. When using “container-type: size” then the queries can check both width and
-height of the element. This also means that we have to specify both width and height of the container.
+This is where we revisit the `container-type` property. As we saw, we have three possible values for the
+container type. We don’t care about the normal value as that is just the default for elements and
+means we don’t have any container query size calculations for the container. The other two properties
+allow us to access the magic of container queries. When using `container-type: size`, the queries can
+check both the width and height of the element. This also means that we have to specify both the
+width and height of the container.
 
-In my experience “container-type: inline-size” is the most useful one. For one thing you only need
-to specify the width of the container. And mostly for applying styles I find that width of the container
-is more important than the height.
+In my experience, container-type: inline-size is the most useful one. For one thing, you only need to
+specify the width of the container. And mostly for applying styles, I find that the width of the
+container is more important than the height.
 
 ## Usage in TailwindCSS
 
-If you are like me and love tailwind then you would be pleased to know that tailwind also supports
-container queries. This support is not out of the box but there is an official plugin
-[tailwindcss-container-queries](https://github.com/tailwindlabs/tailwindcss-container-queries) that
-helps you write container queries today.
+If you are like me and love Tailwind, then you would be pleased to know that Tailwind also supports
+container queries. This support is not out of the box, but there is an official plugin,
+[tailwindcss-container-queries](https://github.com/tailwindlabs/tailwindcss-container-queries),
+that helps you write container queries today.
 
 Here is how you would use it:
 
@@ -198,18 +200,18 @@ Here is how you would use it:
 
 ## Browser Support
 
-Well the good news does not end here! Container queries are not supported in all major browsers
-and you can safely use it in production sites today.
+Well, the good news does not end here! Container queries are now supported in all major browsers,
+and you can safely use them in production sites today.
 
 <figure>
   <Image src={browserSupport} alt="Can I use container queries" />
-  <figcaption>Browser Support for Container queries</figcaption>
+  <figcaption>Browser Support for Container Queries</figcaption>
 </figure>
 
 ## Conclusion
 
-Container queries is one of the best features that has been added to CSS in recent years. It
-fits so well with the component architecture of the web today. It is not only easy to use but
-has great browser support today! So go out and give it a go 🚀.
+Container queries are one of the best features that have been added to CSS in recent years.
+They fit so well with the component architecture of the web today. Not only are they easy to use,
+but they also have great browser support today! So go out and give it a try 🚀.
 
 </article>
