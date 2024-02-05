@@ -1,26 +1,36 @@
 import { MdxImage as Image } from '@/components/MdxImage';
 import { getMetadataBySlug } from '../articleList';
 import { ManagerCard } from './ManagerCard';
-import inFlyoutImage from './in-flyout.png';
-import inMainPageImage from './in-main-page.png';
-import browserSupport from './browser-support.png';
+import heroImage from './hero.webp';
+import inFlyoutImage from './in-flyout.webp';
+import inMainPageImage from './in-main-page.webp';
+import browserSupport from './browser-support.webp';
 
 export const metadata = getMetadataBySlug('container-queries');
+
+<Image
+  src={heroImage}
+  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  priority
+  alt="Hero Image"
+  aria-hidden
+/>
 
 <article>
 # Container Queries
 
 As the web has evolved, we have moved to using more and more components. Be it
-Frontend frameworks like React or Svelte, or templating languages like laravel Blade; all of them
-depend on the concept of components. These components can be used inside dialogs, split-screens or
-the main content area, meaning their size requirements can vary widely. Luckily for us, CSS has
-caught up with this trend and has introduced a new feature called Container Queries, which allows
-us to style components based on their container size.
+frontend frameworks like React or Svelte, or templating languages like Laravel Blade;
+all of them depend on the concept of components. These components can be used inside
+dialogs, split-screens, or the main content area, meaning their size requirements can
+vary widely. Luckily for us, CSS has caught up with this trend and has introduced a
+new feature called Container Queries, which allows us to style components based on
+their container size.
 
-You may be wondering, “Hasan we already have media queries!”. And you are right of course, but
-media queries are based on the viewport size, and with how you can have your component anywhere
-wouldn't it be nice if your component could be aware of its container size and adjust accordingly?
-And all that without a single line of JS? Now that I have your attention (hopefully), let's dive in.
+You may be wondering, “Hasan, we already have media queries!”. And you are right, of
+course, but media queries are based on the viewport size. Wouldn’t it be nice if your
+component could be aware of its container size and adjust accordingly? And all that
+without a single line of JS? Now that I have your attention (hopefully), let’s dive in.
 
 ## When to use Container Queries
 
