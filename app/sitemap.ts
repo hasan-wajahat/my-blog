@@ -16,6 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1,
     },
+    {
+      url: 'https://frontendwithhasan.com/about-me',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 1,
+    },
     ...articlesMaps,
   ];
 }
