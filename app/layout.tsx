@@ -1,9 +1,10 @@
-import './globals.css';
 import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter, Dosis } from 'next/font/google';
 import Header from './components/Header';
 import { cn } from './lib/utils';
+import './globals.css';
+import { ThemeProvider } from './ThemeProvider';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -25,7 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-pt-12">
+    // Hydration warning is suppressed to handle theme switching
+    <html lang="en" className="scroll-pt-12" suppressHydrationWarning>
       <body
         className={cn(
           inter.variable,
@@ -37,9 +39,11 @@ export default function RootLayout({
           'font-sans'
         )}
       >
-        <Header />
-        {children}
-        <Analytics />
+        <ThemeProvider>
+          <Header />
+          {children}
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );
