@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Analytics } from '@vercel/analytics/react';
 import { Inter, Dosis } from 'next/font/google';
 import Header from './components/Header';
 import { cn } from './lib/utils';
@@ -42,7 +41,6 @@ export default function RootLayout({
         <ThemeProvider>
           <Header />
           {children}
-          <Analytics />
         </ThemeProvider>
       </body>
     </html>
