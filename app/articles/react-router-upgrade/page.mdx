@@ -1,8 +1,8 @@
-import { MdxImage as Image } from '@/components/MdxImage'
-import {getMetadataBySlug} from '../articleList';
+import { MdxImage as Image } from '@/components/MdxImage';
+import { getMetadataForArticles } from '../articleList';
 import heroImage from './hero.webp';
 
-export const metadata = getMetadataBySlug('react-router-upgrade');
+export const metadata = getMetadataForArticles('react-router-upgrade');
 
 <Image
   src={heroImage}

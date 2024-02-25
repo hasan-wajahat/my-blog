@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 type Article = {
   title: string;
   author: string;
@@ -26,11 +28,27 @@ export const articleList: Article[] = [
 export const getArticleBySlug = (slug: string) =>
   articleList.find((article) => article.slug === slug);
 
-export const getMetadataBySlug = (slug: string) => {
+export const getMetadataForArticles = (slug: string): Metadata => {
   const currentArticle = getArticleBySlug(slug);
 
   return {
     title: currentArticle?.title,
     description: currentArticle?.excerpt,
+    metadataBase: new URL('https://frontendwithhasan.com/'),
+    openGraph: {
+      title: currentArticle?.title,
+      description: currentArticle?.excerpt,
+      url: `articles/${slug}`,
+      siteName: 'Frontend with Hasan',
+      images: [
+        {
+          url: 'og.jpg',
+          width: 800,
+          height: 800,
+        },
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
   };
 }
