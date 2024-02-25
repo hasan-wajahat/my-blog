@@ -21,8 +21,10 @@ const manager: ManagerInfo = {
 };
 
 export const ManagerCard = () => (
-  <div className="w-full max-w-md rounded border border-gray-300 bg-white p-4 text-primary">
-    <div className="mb-3 text-base font-medium">Dedicated Account Manager</div>
+  <div className="w-full max-w-md rounded border border-gray-300 bg-white p-4 text-gray-700">
+    <div className="mb-3 text-base font-medium text-gray-700">
+      Dedicated Account Manager
+    </div>
 
     <div className="flex flex-wrap justify-between">
       <div className="flex">
@@ -36,12 +38,12 @@ export const ManagerCard = () => (
 
         <div className="mb-2 space-y-6">
           <div>
-            <div className="text-lg font-medium text-primary">
+            <div className="text-lg font-medium">
               {manager.firstName} {manager.lastName}
             </div>
             <div className="text-sm font-normal">{manager.role}</div>
             <a
-              className="flex items-center text-sm font-normal text-gray-700"
+              className="flex items-center text-sm font-normal"
               href={`mailto:${manager.email}`}
             >
               <MdEmail className="h-4 w-4" />
@@ -52,7 +54,7 @@ export const ManagerCard = () => (
       </div>
 
       <div className="mb-2">
-        <div className="mb-2 text-sm font-normal text-primary">
+        <div className="mb-2 text-sm font-normal">
           Reach out to your Account Manager to discuss anything Sematext
           related.
         </div>
@@ -78,7 +80,7 @@ export const ManagerCard = () => (
 
       <div>
         <Button
-          className="flex h-8 cursor-pointer items-center rounded border border-gray-300 bg-white px-1 py-1 text-base font-semibold text-primary hover:bg-gray-100"
+          className="flex h-8 cursor-pointer items-center rounded border border-gray-300 bg-white px-1 py-1 text-base font-semibold hover:bg-gray-100"
           onClick={() => {}}
         >
           <MdCalendarMonth />
