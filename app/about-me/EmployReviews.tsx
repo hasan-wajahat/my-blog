@@ -7,7 +7,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import asafImage from '@/images/employ-reviews/asaf.jpg';
 import ericImage from '@/images/employ-reviews/eric.jpg';
 import chunImage from '@/images/employ-reviews/chun.jpg';
 import anonymousImage from '@/images/employ-reviews/anonymous.png';
@@ -19,13 +18,6 @@ const EMPLOYER_DATA = [
     image: ericImage,
     testimonial:
       "Hasan is a very talented developer. Over the 2+ years we've worked together, he's never stopped growing his skill set and exceeding expectations. He's always been very conscientious and has taken great cares in both his craft and client satisfaction. I would highly recommend him- his positive attitude and continuous-learning mindset sets him apart as someone I genuinely enjoy working with.",
-  },
-  {
-    name: 'Asaf Ebgi',
-    title: 'Co-Founder & CTO, XYB',
-    image: asafImage,
-    testimonial:
-      'Hasan has proven himself to be an excellent employee. During his tenure in XYB he has shown tremendous growth and initiative. We have always felt comfortable giving him projects due to his ability to finish tasks allotted to him. Also he has complete grip over all matters related to web technologies.',
   },
   {
     name: 'Hyunil Chon',
