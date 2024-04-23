@@ -12,11 +12,11 @@ const ContactMe = () => {
           onClick={() => {
             window.location.href = 'mailto:hasan_wajahat@hotmail.com';
           }}
-          className="mr-4 bg-slate-700 hover:bg-slate-500"
+          className="mr-4 bg-slate-500 hover:bg-slate-400"
         >
           Contact Me
         </Button>
-        <Button asChild className="bg-slate-700 hover:bg-slate-500">
+        <Button asChild className="bg-slate-500 hover:bg-slate-400">
           <a href="/resume.pdf" download>
             Download CV
           </a>
