@@ -65,8 +65,8 @@ devDependencies:
     specifier: ^0.5.13
     version: 0.5.13(tailwindcss@3.4.3)
   '@types/mdx':
-    specifier: ^2.0.12
-    version: 2.0.12
+    specifier: ^2.0.13
+    version: 2.0.13
   '@types/node':
     specifier: 20.11.25
     version: 20.11.25
@@ -460,7 +460,7 @@ packages:
       '@types/estree': 1.0.3
       '@types/estree-jsx': 1.0.2
       '@types/hast': 3.0.2
-      '@types/mdx': 2.0.12
+      '@types/mdx': 2.0.13
       collapse-white-space: 2.1.0
       devlop: 1.1.0
       estree-util-build-jsx: 3.0.1
@@ -490,7 +490,7 @@ packages:
       '@types/react': '>=16'
       react: '>=16'
     dependencies:
-      '@types/mdx': 2.0.12
+      '@types/mdx': 2.0.13
       '@types/react': 18.3.1
       react: 18.3.1
     dev: false
@@ -743,8 +743,8 @@ packages:
       '@types/unist': 3.0.1
     dev: false
 
-  /@types/mdx@2.0.12:
-    resolution: {integrity: sha512-H9VZ9YqE+H28FQVchC83RCs5xQ2J7mAAv6qdDEaWmXEVl3OpdH+xfrSUzQ1lp7U7oSTRZ0RvW08ASPJsYBi7Cw==}
+  /@types/mdx@2.0.13:
+    resolution: {integrity: sha512-+OWZQfAYyio6YkJb3HLxDrvnx6SWWDbC0zVPfBRzUk0/nqoDyf6dNxQi3eArPe8rJ473nobTMQ/8Zk+LxJ+Yuw==}
 
   /@types/ms@0.7.33:
     resolution: {integrity: sha512-AuHIyzR5Hea7ij0P9q7vx7xu4z0C28ucwjAZC0ja7JhINyCnOw8/DnvAPQQ9TfOlCtZAmCERKQX9+o1mgQhuOQ==}
