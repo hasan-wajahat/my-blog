@@ -12,8 +12,8 @@ dependencies:
     specifier: ^3.0.1
     version: 3.0.1(@types/react@18.3.1)(react@18.3.1)
   '@next/mdx':
-    specifier: ^14.1.0
-    version: 14.1.0(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.1)
+    specifier: ^14.2.3
+    version: 14.2.3(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.1)
   '@radix-ui/react-slot':
     specifier: ^1.0.2
     version: 1.0.2(@types/react@18.3.1)(react@18.3.1)
@@ -505,8 +505,8 @@ packages:
       glob: 10.3.10
     dev: true
 
-  /@next/mdx@14.1.0(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.1):
-    resolution: {integrity: sha512-YLYsViq91+H8+3oCtK1iuMWdeN14K70Hy6/tYScY+nfo5bQ84A/A+vA6UdNC9MkbWQ/373hQubx2p4JvUjlb2Q==}
+  /@next/mdx@14.2.3(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.1):
+    resolution: {integrity: sha512-oVz7BWpoLQ9dKvCKxPIX9X6BILPTrpTJnYDn2lAsZvK7J9Ela6xNm57vNwgZ8q7xw1THSDdSlbPNgIalM7U/+A==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
       '@mdx-js/react': '>=0.15.0'
