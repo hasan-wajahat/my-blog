@@ -14,7 +14,7 @@
     "@next/mdx": "^14.2.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@vercel/analytics": "^1.2.2",
-    "bright": "^0.8.4",
+    "bright": "^0.8.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "embla-carousel-react": "8.0.0-rc17",
