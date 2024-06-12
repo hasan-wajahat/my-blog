@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import { Metadata } from 'next';
 
 type Article = {
   title: string;
@@ -22,6 +22,14 @@ export const articleList: Article[] = [
     excerpt: 'A guide on how to start using container queries today.',
     date: '31-01-2024',
     slug: 'container-queries',
+  },
+  {
+    title: 'Running Playwright in AWS Lambda',
+    author: 'Hasan Wajahat',
+    excerpt:
+      'A guide on how to run playwright as a docker container in AWS Lambda.',
+    date: '15-06-2024',
+    slug: 'playwright-aws-lambda',
   },
 ];
 
@@ -51,4 +59,4 @@ export const getMetadataForArticles = (slug: string): Metadata => {
       type: 'website',
     },
   };
-}
+};

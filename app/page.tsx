@@ -25,7 +25,7 @@ export default function Home() {
       </div>
 
       <div className="my-8 max-w-3xl">
-        {articleList.map((article) => (
+        {articleList.reverse().map((article) => (
           <ArticleTile
             key={article.slug}
             title={article.title}

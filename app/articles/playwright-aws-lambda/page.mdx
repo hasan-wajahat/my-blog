@@ -1,0 +1,92 @@
+import { MdxImage as Image } from '@/components/MdxImage';
+import { getMetadataForArticles } from '../articleList';
+import heroImage from './hero.webp';
+
+export const metadata = getMetadataForArticles('playwright-aws-lambda');
+
+<Image
+  src={heroImage}
+  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  priority
+  alt="Hero Image"
+  aria-hidden
+/>
+
+<article>
+# Running Playwright as a Docker Container in AWS Lambda.
+
+## Playwright
+
+Playwright has quickly become a go-to tool for web automation. Developed by
+the same team behind Puppeteer, it excels in handling multiple browser
+contexts and is celebrated for its versatility.
+
+## Understanding Serverless and AWS Lambdas
+
+Serverless computing lets you focus on code without worrying about
+infrastructure. AWS Lambda is a key player here, offering auto-scaling
+and cost efficiency. It only charges for the compute time your code uses.
+
+## The Challenge with Playwright on Serverless
+
+Running Playwright on AWS Lambda isn’t straightforward due to its
+dependency on a full browser environment. The solution lies in Docker,
+specifically using a custom Docker image tailored for AWS Lambda.
+
+## Setting Up Docker for AWS Lambdas
+
+We’ll use the official Playwright Docker image as our base,
+adding necessary dependencies like libcurl4-openssl-dev, libtool,
+and aws-lambda-ric.
+
+```dockerfile
+FROM mcr.microsoft.com/playwright:focal
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+  libcurl4-openssl-dev \
+  libtool \
+  aws-lambda-ric
+
+# Copy application code
+COPY . /app
+
+# Set working directory
+WORKDIR /app
+
+# Command to run app
+CMD ["your-command"]
+```
+
+## Deploying to AWS Lambda
+
+1. Build the Docker image.
+
+```bash
+docker build -t your-image-name .
+docker tag your-image-name:latest your-dockerhub-username/your-image-name:latest
+```
+
+2. Push Image to Docker Hub
+
+```bash
+docker login
+docker push your-dockerhub-username/your-image-name:latest
+```
+
+3. Deploy to AWS Lambda
+
+Use AWS CLI or the AWS console to create a Lambda function with
+your container image. Ensure the image is in the same region as
+your Lambda function.
+
+## Testing and Optimization
+
+Test your setup through the AWS Lambda console, configure your function,
+and trigger it. Advanced users can leverage AWS CLI for streamlined deployments.
+
+By following these steps, you can effectively run Playwright within AWS
+Lambdas, harnessing the power of serverless architecture. For further
+optimizations, refer to the Playwright documentation.
+
+</article>
