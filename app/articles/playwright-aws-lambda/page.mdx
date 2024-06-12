@@ -17,45 +17,83 @@ export const metadata = getMetadataForArticles('playwright-aws-lambda');
 
 ## Playwright
 
-Playwright has quickly become a go-to tool for web automation. Developed by
-the same team behind Puppeteer, it excels in handling multiple browser
-contexts and is celebrated for its versatility.
+Playwright has quickly become a go-to tool for end-to-end testing and
+browser automation. The Playwright team includes developers from Google's
+Puppeteer project and anyone who has worked with both can clearly see that
+it takes inspiration from Puppeteer but instead of copying it they improved upon it.
 
 ## Understanding Serverless and AWS Lambdas
 
-Serverless computing lets you focus on code without worrying about
-infrastructure. AWS Lambda is a key player here, offering auto-scaling
-and cost efficiency. It only charges for the compute time your code uses.
+Serverless is definitely a buzzword in the tech industry, but there are places
+where it shines. Autoscaling can be hard to get right, but with serverless, all that
+complexity is handled by the cloud provider. All one has to do is write your specific code
+in the language of your choice and deploy it on the cloud where it will be run on demand.
 
-## The Challenge with Playwright on Serverless
+Like with most of the internet, AWS leads the way in serverless with its Lambda service.
 
-Running Playwright on AWS Lambda isn’t straightforward due to its
-dependency on a full browser environment. The solution lies in Docker,
-specifically using a custom Docker image tailored for AWS Lambda.
+## The Challenge with Playwright on Serverless Environments
+
+So how do we go about running Playwright on AWS Lambda? If it was as simple as running
+`npm install` I would not be writing this article. The problem comes from the fact that
+Lambdas runtime environment is a very bare bones linux distribution, it is like to this
+have minimal [cold-starts](https://docs.aws.amazon.com/lambda/latest/operatorguide/execution-environments.html#cold-start-latency)
+and fast execution times. But this also means that it lacks many
+of the libraries that Playwright and Chrome needs to run.
+
+There are couple of solutions to this problem, one is to provide all the libraries that
+AWS Linux distribution is missing and provide a custom implementation of browser that can run
+in a serverless environment. Similar to packages such as this: [chrome-aws-lambda](https://github.com/Sparticuz/chromium).
+Or run on your own container directly in AWS Lambda.
+
+## Migration to Dockerized Playwright
+
+We at [sematext](https://sematext.com) had been using Puppeteer with the above mentioned package for
+some time now. But the new features and improvements in Playwright and similarity in syntax with Puppeteer
+really convinced us to make the switch.
+
+We had been burned by using third party chromium packages and things could easily break with one security patch
+from AWS. So we decided to have our own containers running only official Playwright images. This guarantees
+a stable runtime environment and kept us immune from changes or problems in the third party packages.
 
 ## Setting Up Docker for AWS Lambdas
 
-We’ll use the official Playwright Docker image as our base,
-adding necessary dependencies like libcurl4-openssl-dev, libtool,
-and aws-lambda-ric.
+Thankfully the good people at Microsoft provide a [Playwright Docker image]()
 
 ```dockerfile
-FROM mcr.microsoft.com/playwright:focal
+# Use the Playwright base image
+FROM mcr.microsoft.com/playwright:v1.44.1-focal-amd64
 
-# Install dependencies
 RUN apt-get update && apt-get install -y \
-  libcurl4-openssl-dev \
-  libtool \
-  aws-lambda-ric
+    g++ \
+    make \
+    cmake \
+    unzip \
+    libcurl4-openssl-dev \
+    autoconf \
+    libtool
 
-# Copy application code
-COPY . /app
+ENV NPM_CONFIG_CACHE=/tmp/.npm
 
-# Set working directory
-WORKDIR /app
+# To cache the npm install step
+RUN npm install -g aws-lambda-ric
 
-# Command to run app
-CMD ["your-command"]
+COPY package.json ./
+
+# Install the application dependencies
+RUN npm install
+
+# Copy the application code to the container
+COPY . .
+
+RUN npm run lint
+
+RUN npm run build
+
+ENTRYPOINT ["/bin/npx", "aws-lambda-ric"]
+
+# Set the command to run your application
+CMD ["dist/index.handler"]
+
 ```
 
 ## Deploying to AWS Lambda
