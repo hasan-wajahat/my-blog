@@ -23,14 +23,14 @@ export const articleList: Article[] = [
     date: '31-01-2024',
     slug: 'container-queries',
   },
-  {
-    title: 'Running Playwright in AWS Lambda',
-    author: 'Hasan Wajahat',
-    excerpt:
-      'A guide on how to run playwright as a docker container in AWS Lambda.',
-    date: '15-06-2024',
-    slug: 'playwright-aws-lambda',
-  },
+  // {
+  //   title: 'Running Playwright in AWS Lambda',
+  //   author: 'Hasan Wajahat',
+  //   excerpt:
+  //     'A guide on how to run playwright as a docker container in AWS Lambda.',
+  //   date: '15-06-2024',
+  //   slug: 'playwright-aws-lambda',
+  // },
 ];
 
 export const getArticleBySlug = (slug: string) =>
