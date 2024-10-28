@@ -57,10 +57,13 @@ a stable runtime environment and kept us immune from changes or problems in the 
 
 ## Setting Up Docker for AWS Lambdas
 
-Thankfully the good people at Microsoft provide a [Playwright Docker image]()
+Thankfully the good people at Microsoft provide a [Playwright Docker image](https://mcr.microsoft.com/en-us/artifact/mar/playwright/about)
+that contains Playwright browsers and most of the dependencies needed to run it. We do need a few packages
+to run things in our container which I will mention later. Below is the Dockerfile that you can use directly
+to run Playwright in AWS Lambda.
 
 ```dockerfile
-# Use the Playwright base image
+# Use the Playwright base image, last tested with v1.44.1
 FROM mcr.microsoft.com/playwright:v1.44.1-focal-amd64
 
 RUN apt-get update && apt-get install -y \
@@ -95,6 +98,21 @@ ENTRYPOINT ["/bin/npx", "aws-lambda-ric"]
 CMD ["dist/index.handler"]
 
 ```
+
+Even though we’re using Playwright’s official image, we still need to
+install packages like `libcurl4-openssl-dev` and `libtool` to ensure
+Chrome runs properly. Another important point is the aws-lambda-ric package.
+If we had used one of the official AWS images, those would already include
+the necessary tools to launch Lambdas. However, since we’re using Playwright’s
+image, we need to install this package separately. Additionally, because it’s
+a large package, we cache its installation by installing it outside our
+application code.
+
+Regarding the application code, I haven’t included the package.json.
+You can add any packages your application requires in it. Just be sure to
+install both Playwright and Playwright Core, as they are not included in the base image.
+
+### Chrome Development Flags
 
 ## Deploying to AWS Lambda
 
