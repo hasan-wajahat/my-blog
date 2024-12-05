@@ -114,35 +114,23 @@ install both Playwright and Playwright Core, as they are not included in the bas
 
 ### Chrome Development Flags
 
-## Deploying to AWS Lambda
+Since we are running chrome in a limited environment, we need to disable some chrome-features
+which help us run chrome smoothly. The following flags helped us but you might not need all.
 
-1. Build the Docker image.
-
-```bash
-docker build -t your-image-name .
-docker tag your-image-name:latest your-dockerhub-username/your-image-name:latest
+```javascript
+ "--no-zygote",
+  "--disable-setuid-sandbox",
+  "--no-sandbox",
+  "--single-process",
 ```
 
-2. Push Image to Docker Hub
+If you are looking to optimize Chrome, you can disable many other features. In fact, the official
+Playwright package disables several features, which you can review
+[here](https://github.com/microsoft/playwright/blob/main/packages/playwright-core/src/server/chromium/chromiumSwitches.ts).
 
-```bash
-docker login
-docker push your-dockerhub-username/your-image-name:latest
-```
+At this point, our Playwright setup is ready for deployment on AWS Lambda. Next, let’s explore
+how to do that step by step.
 
-3. Deploy to AWS Lambda
-
-Use AWS CLI or the AWS console to create a Lambda function with
-your container image. Ensure the image is in the same region as
-your Lambda function.
-
-## Testing and Optimization
-
-Test your setup through the AWS Lambda console, configure your function,
-and trigger it. Advanced users can leverage AWS CLI for streamlined deployments.
-
-By following these steps, you can effectively run Playwright within AWS
-Lambdas, harnessing the power of serverless architecture. For further
-optimizations, refer to the Playwright documentation.
+## Deploying to AWS Lambdas
 
 </article>
