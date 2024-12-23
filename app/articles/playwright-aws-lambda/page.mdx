@@ -133,4 +133,40 @@ how to do that step by step.
 
 ## Deploying to AWS Lambdas
 
+Deployment can be divided into three parts: building the Docker image, pushing it to a ECR
+and finally deploying it to Lambda. Building the Docker image is simple and can be done with
+
+```bash
+docker build -t <image-name> .
+```
+
+In order to use Docker images with AWS Lambda, we need to push the image to ECR. First create a fresh repository
+using the AWS console then we tag our local image to be able to push to ECR. However before we can push the image
+we need to login with Docker in our AWS CLI. This can be done with the following command:
+
+```bash
+aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <account-id>.dkr.ecr.<region>.amazonaws.com
+```
+
+We tag our local image using the following command:
+
+```bash
+docker tag <image-name>:latest <account-id>.dkr.ecr.<region>.amazonaws.com/<repository-name>
+```
+
+Finally we push the image to ECR with the following command:
+
+```bash
+docker push <account-id>.dkr.ecr.<region>.amazonaws.com/<repository-name>
+```
+
+Now that our image is in ECR, we can deploy it to Lambda. This can be done easily by creating a new Lambda function,
+selecting container image and browse image to select the image we just pushed to ECR.
+
+## Conclusion
+
+At this stage you should have a working Playwright Lambda function capable of performing whatever tasks you need.
+Like I noted above this simplifies our Playwright execution and makes scaling up very simple. We have been using
+this new setup for many months and have seen improvements both in performance and stability.
+
 </article>
