@@ -88,14 +88,14 @@ importers:
         specifier: 15.1.6
         version: 15.1.6(eslint@8.57.0)(typescript@5.6.3)
       eslint-config-prettier:
-        specifier: ^9.1.0
-        version: 9.1.0(eslint@8.57.0)
+        specifier: ^10.1.2
+        version: 10.1.2(eslint@8.57.0)
       eslint-plugin-jsx-a11y:
         specifier: ^6.10.2
         version: 6.10.2(eslint@8.57.0)
       eslint-plugin-prettier:
         specifier: ^5.2.6
-        version: 5.2.6(@types/eslint@8.56.3)(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.4.2)
+        version: 5.2.6(@types/eslint@8.56.3)(eslint-config-prettier@10.1.2(eslint@8.57.0))(eslint@8.57.0)(prettier@3.4.2)
       postcss:
         specifier: 8.4.49
         version: 8.4.49
@@ -1263,8 +1263,8 @@ packages:
       typescript:
         optional: true
 
-  eslint-config-prettier@9.1.0:
-    resolution: {integrity: sha512-NSWl5BFQWEPi1j4TjVNItzYV7dZXZ+wP6I6ZhrBGpChQhZRUaElihE9uRRkcbRnNb76UMKDF3r+WTmNcGPKsqw==}
+  eslint-config-prettier@10.1.2:
+    resolution: {integrity: sha512-Epgp/EofAUeEpIdZkW60MHKvPyru1ruQJxPL+WIycnaPApuseK0Zpkrh/FwL9oIpQvIhJwV7ptOy0DWUjTlCiA==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
@@ -4298,7 +4298,7 @@ snapshots:
       - eslint-plugin-import-x
       - supports-color
 
-  eslint-config-prettier@9.1.0(eslint@8.57.0):
+  eslint-config-prettier@10.1.2(eslint@8.57.0):
     dependencies:
       eslint: 8.57.0
 
@@ -4385,7 +4385,7 @@ snapshots:
       safe-regex-test: 1.1.0
       string.prototype.includes: 2.0.1
 
-  eslint-plugin-prettier@5.2.6(@types/eslint@8.56.3)(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.4.2):
+  eslint-plugin-prettier@5.2.6(@types/eslint@8.56.3)(eslint-config-prettier@10.1.2(eslint@8.57.0))(eslint@8.57.0)(prettier@3.4.2):
     dependencies:
       eslint: 8.57.0
       prettier: 3.4.2
@@ -4393,7 +4393,7 @@ snapshots:
       synckit: 0.11.2
     optionalDependencies:
       '@types/eslint': 8.56.3
-      eslint-config-prettier: 9.1.0(eslint@8.57.0)
+      eslint-config-prettier: 10.1.2(eslint@8.57.0)
 
   eslint-plugin-react-hooks@5.1.0(eslint@8.57.0):
     dependencies:
