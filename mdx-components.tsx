@@ -1,6 +1,6 @@
 import type { MDXComponents } from 'mdx/types';
 import { Code } from 'bright';
-import { AnchorHTMLAttributes, DetailedHTMLProps, HTMLAttributes } from 'react';
+import type { AnchorHTMLAttributes, DetailedHTMLProps, HTMLAttributes, JSX } from 'react';
 
 type CustomLinkProps = DetailedHTMLProps<
   AnchorHTMLAttributes<HTMLAnchorElement>,
