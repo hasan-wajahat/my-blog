@@ -19,11 +19,7 @@ export const metadata: Metadata = {
   description: 'Frontend topics explained in simple words',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     // Hydration warning is suppressed to handle theme switching
     <html lang="en" className="scroll-pt-12" suppressHydrationWarning>

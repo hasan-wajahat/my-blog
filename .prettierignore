@@ -1,6 +1,0 @@
-# Ignore artifacts:
-.next
-/node_modules
-/.git
-pnpm-lock.yaml
-.eslintrc.json

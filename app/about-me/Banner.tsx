@@ -26,12 +26,8 @@ const Banner = () => {
         <div className="flex shrink grow basis-0 md:justify-center">
           <div>
             <p className="my-1 md:my-4">Hello</p>
-            <h1 className="mb-2 text-2xl md:mb-6 md:text-6xl">
-              I&rsquo;m Hasan
-            </h1>
-            <h2 className="text-sm md:mb-4 md:text-2xl">
-              A passionate web developer.
-            </h2>
+            <h1 className="mb-2 text-2xl md:mb-6 md:text-6xl">I&rsquo;m Hasan</h1>
+            <h2 className="text-sm md:mb-4 md:text-2xl">A passionate web developer.</h2>
             <h2 className="text-sm md:mb-4 md:text-2xl">
               With over {experience} years of experience
             </h2>
@@ -44,41 +40,13 @@ const Banner = () => {
       </div>
 
       <div className="relative inline-flex flex-wrap justify-center gap-3 rounded-lg bg-gray-200 px-5 py-3 shadow-[0_0_2px_2px] shadow-gray-500/20 dark:bg-gray-900 md:bottom-10 md:mx-auto md:flex md:flex-nowrap md:gap-5 lg:max-w-[80%]">
-        <Image
-          src={reactLogo}
-          alt="React logo"
-          className="h-8 w-8 md:h-20 md:w-20"
-        />
-        <Image
-          src={nextJsLogo}
-          alt="Next JS logo"
-          className="h-8 w-8 md:h-20 md:w-20"
-        />
-        <Image
-          src={reduxLogo}
-          alt="Redux logo"
-          className="h-8 w-8 md:h-20 md:w-20"
-        />
-        <Image
-          src={laravelLogo}
-          alt="Laravel logo"
-          className="h-8 w-8 md:h-20 md:w-20"
-        />
-        <Image
-          src={goLogo}
-          alt="Git logo"
-          className="h-8 w-8 md:h-20 md:w-20"
-        />
-        <Image
-          src={lambdaLogo}
-          alt="Node logo"
-          className="h-8 w-8 md:h-20 md:w-20"
-        />
-        <Image
-          src={dockerLogo}
-          alt="Docker logo"
-          className="h-8 w-8 md:h-20 md:w-20"
-        />
+        <Image src={reactLogo} alt="React logo" className="h-8 w-8 md:h-20 md:w-20" />
+        <Image src={nextJsLogo} alt="Next JS logo" className="h-8 w-8 md:h-20 md:w-20" />
+        <Image src={reduxLogo} alt="Redux logo" className="h-8 w-8 md:h-20 md:w-20" />
+        <Image src={laravelLogo} alt="Laravel logo" className="h-8 w-8 md:h-20 md:w-20" />
+        <Image src={goLogo} alt="Git logo" className="h-8 w-8 md:h-20 md:w-20" />
+        <Image src={lambdaLogo} alt="Node logo" className="h-8 w-8 md:h-20 md:w-20" />
+        <Image src={dockerLogo} alt="Docker logo" className="h-8 w-8 md:h-20 md:w-20" />
       </div>
     </section>
   );

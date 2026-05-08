@@ -19,10 +19,7 @@ const toSlug = (text: string) =>
     .replace(/\s+/g, '-')
     .replace(/[^\w-]+/g, '');
 
-type HeadingProps = DetailedHTMLProps<
-  HTMLAttributes<HTMLHeadingElement>,
-  HTMLHeadingElement
->;
+type HeadingProps = DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
 
 const Heading = ({ level, children }: HeadingProps & { level: number }) => {
   const slug = toSlug(String(children));

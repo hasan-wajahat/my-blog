@@ -26,8 +26,7 @@ export const articleList: Article[] = [
   {
     title: 'Running Playwright in AWS Lambda',
     author: 'Hasan Wajahat',
-    excerpt:
-      'A guide on how to run playwright as a docker container in AWS Lambda.',
+    excerpt: 'A guide on how to run playwright as a docker container in AWS Lambda.',
     date: '15-06-2024',
     slug: 'playwright-aws-lambda',
   },

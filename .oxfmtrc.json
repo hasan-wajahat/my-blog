@@ -1,0 +1,6 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "ignorePatterns": [".next", "node_modules", "pnpm-lock.yaml"]
+}

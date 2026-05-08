@@ -23,11 +23,7 @@ const ContactMe = () => {
         </Button>
       </div>
       <div className="my-6 flex justify-center gap-6">
-        <a
-          href="https://github.com/hasan-wajahat"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="https://github.com/hasan-wajahat" target="_blank" rel="noopener noreferrer">
           <FaGithub size={32} className="fill-slate-600 hover:fill-slate-400" />
         </a>
         <a
@@ -35,20 +31,10 @@ const ContactMe = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FaLinkedin
-            size={32}
-            className="fill-slate-600 hover:fill-slate-400"
-          />
+          <FaLinkedin size={32} className="fill-slate-600 hover:fill-slate-400" />
         </a>
-        <a
-          href="https://twitter.com/hasanwajahat90"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaTwitter
-            size={32}
-            className="fill-slate-600 hover:fill-slate-400"
-          />
+        <a href="https://twitter.com/hasanwajahat90" target="_blank" rel="noopener noreferrer">
+          <FaTwitter size={32} className="fill-slate-600 hover:fill-slate-400" />
         </a>
       </div>
     </section>
