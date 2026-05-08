@@ -26,5 +26,8 @@ jobs:
       - name: Check Formatting
         run: pnpm run format:check
 
+      - name: Generate Next.js types
+        run: pnpm exec next typegen
+
       - name: Typecheck
         run: pnpm run typecheck
