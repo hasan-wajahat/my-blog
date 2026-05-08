@@ -23,7 +23,7 @@ const Banner = () => {
             className="w-[120px] rounded-full bg-gray-200 object-cover dark:bg-gray-600"
           />
         </div>
-        <div className="flex flex-shrink flex-grow basis-0 md:justify-center">
+        <div className="flex shrink grow basis-0 md:justify-center">
           <div>
             <p className="my-1 md:my-4">Hello</p>
             <h1 className="mb-2 text-2xl md:mb-6 md:text-6xl">
@@ -38,7 +38,7 @@ const Banner = () => {
             <h2 className="text-sm md:text-2xl">developing web apps.</h2>
           </div>
         </div>
-        <div className="hidden flex-shrink flex-grow basis-0 justify-center rounded-md bg-gradient-to-r from-transparent dark:to-[#03a8f430] md:flex">
+        <div className="hidden shrink grow basis-0 justify-center rounded-md bg-linear-to-r from-transparent dark:to-[#03a8f430] md:flex">
           <Image src={profileImg} alt="Hasan" priority className="w-[420px]" />
         </div>
       </div>
