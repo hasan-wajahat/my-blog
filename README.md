@@ -46,13 +46,25 @@ app/about-me/: Contains the about me page.
 
 ## Technologies
 
-- [Next.js](https://nextjs.org/) as the meta framework.
-- [TypeScript](https://www.typescriptlang.org/) as the main language.
-- [Tailwind CSS](https://tailwindcss.com/) as the CSS framework.
+- [Next.js](https://nextjs.org/) 16 (App Router) as the meta framework.
+- [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) as the bundler (dev + production builds).
+- [React](https://react.dev/) 19 for the UI layer.
+- [TypeScript](https://www.typescriptlang.org/) 6 as the main language.
+- [Tailwind CSS](https://tailwindcss.com/) 4 as the CSS framework.
 - [pnpm](https://pnpm.io/) as the package manager.
-- [ESLint](https://eslint.org/) as the linter.
-- [Prettier](https://prettier.io/) as the code formatter.
+- [oxlint](https://oxc.rs/docs/guide/usage/linter) as the linter (Rust-based, replaces ESLint).
+- [oxfmt](https://oxc.rs/docs/guide/usage/formatter) as the code formatter (Rust-based, replaces Prettier).
 - [@next/mdx](https://nextjs.org/docs/pages/building-your-application/configuring/mdx#nextmdx) as the markdown parser.
+
+## Scripts
+
+- `pnpm dev` — start dev server (Turbopack)
+- `pnpm build` — production build (Turbopack)
+- `pnpm start` — run production server
+- `pnpm lint` — run oxlint
+- `pnpm format` — format files with oxfmt
+- `pnpm format:check` — check formatting without writing
+- `pnpm typecheck` — run TypeScript without emit
 
 ## Deployment
 
