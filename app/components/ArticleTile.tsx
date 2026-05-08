@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { FiArrowRight } from 'react-icons/fi';
 
 interface ArticleTileProps {
   title: string;
@@ -20,8 +21,12 @@ const ArticleTile: React.FC<ArticleTileProps> = ({ title, author, date, excerpt,
         By {author} on <time dateTime={date}>{date}</time>
       </p>
       <p className="mb-2 max-w-prose">{excerpt}</p>
-      <div>
-        Read More <span className="text-sky-500"> -&gt;</span>
+      <div className="mt-1 inline-flex items-center gap-1.5">
+        <span className="leading-none">Read More</span>
+        <FiArrowRight
+          className="size-4 text-sky-500 transition-transform group-hover:translate-x-0.5"
+          aria-hidden
+        />
       </div>
     </Link>
   );
